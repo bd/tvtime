@@ -1,7 +1,6 @@
-FROM python:3.7
+FROM django
 RUN mkdir /app
 WORKDIR /app
-ENV PYTHONUNBUFFERED 1
 ENV PYTHONPATH /app
 COPY requirements.txt /app/
 RUN pip install -r requirements.txt
