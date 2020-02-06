@@ -25,7 +25,13 @@ dcr web django-admin run test
 dcr web bash
 
 # to bring up the project s.t. the site is served at localhost:8000
-docker-compose up
+dc up
+
+# view running processes (containers) in docker-compose.yml
+dc ps
+
+# stop + remove services and network
+dc down
 ```
 
 
