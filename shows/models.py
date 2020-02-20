@@ -24,6 +24,9 @@ class Channel(MediaBase):
     A media source, e.g. Hulu, Netflix, etc.
     """
 
+    class Meta:
+        abstract = False
+
 
 class Show(MediaBase):
     """
@@ -31,6 +34,8 @@ class Show(MediaBase):
     series/seasons/episodes
     """
 
+    class Meta:
+        abstract = False
 
 class Series(MediaBase):
     """
@@ -41,6 +46,7 @@ class Series(MediaBase):
     channels = models.ManyToManyField(Channel)
 
     class Meta:
+        abstract = False
         unique_together = [['show', 'number']]
 
 class Episode(MediaBase):
@@ -50,8 +56,9 @@ class Episode(MediaBase):
     series = models.ForeignKey(Series, related_name="series", on_delete=models.CASCADE)
     number = models.IntegerField(default=0)
     video = models.URLField(null=False, blank=False)
-    air_date = models.DateTimeField()
+    air_date = models.DateTimeField(null=True, blank=True)
 
     class Meta:
+        abstract = False
         unique_together = [['series', 'number'],]
 
