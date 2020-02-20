@@ -8,7 +8,7 @@ class MediaBase(models.Model):
     and thus a slug, complemented by a UUID
     """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    slug = models.SlugField(max_length=256, unique=True)
+    slug = models.SlugField(max_length=256, unique=True, blank=True)
 
 
     class Meta:
@@ -43,9 +43,9 @@ class Series(MediaBase):
     """
     What the American viewing audience might call a Season, represents a grouping of Episodes within a show
     """
-    show = models.ForeignKey(Show, related_name="shows", on_delete=models.CASCADE)
-    number = models.IntegerField(default=1)
     channels = models.ManyToManyField(Channel, blank=True)
+    number = models.IntegerField(default=1)
+    show = models.ForeignKey(Show, related_name="shows", on_delete=models.CASCADE)
 
     class Meta:
         abstract = False
@@ -55,11 +55,11 @@ class Episode(MediaBase):
     """
     The actual thing you can watch, and its metadata
     """
-    series = models.ForeignKey(Series, related_name="series", on_delete=models.CASCADE)
-    number = models.IntegerField(default=1)
-    video = models.URLField(null=False, blank=False)
     air_date = models.DateTimeField(null=True, blank=True)
+    number = models.IntegerField(default=1)
+    series = models.ForeignKey(Series, related_name="series", on_delete=models.CASCADE)
     title = models.CharField(max_length=256, unique=True, null=False, blank=False)
+    video = models.URLField(null=False, blank=False)
 
     class Meta:
         abstract = False
