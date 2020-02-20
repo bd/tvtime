@@ -44,6 +44,7 @@ Advanced features and extensions are imagined, though no roadmap is currently im
     - linked streaming accounts
     - white/blacklist, favorites
 - local media selector
+- automatic collection of media data
 
     
     
