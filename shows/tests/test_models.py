@@ -2,6 +2,7 @@ from django.test import TestCase
 
 from ..models import Show
 
+
 class AutoSlugMixinTestCase(TestCase):
 
     def test_save_creates_slug(self):
@@ -18,5 +19,3 @@ class AutoSlugMixinTestCase(TestCase):
         my_show = Show.objects.create(title="Twighlight Zone")
         self.assertIsNotNone(my_show.id)
         self.assertEqual(len(my_show.id.bytes), 16)
-
-

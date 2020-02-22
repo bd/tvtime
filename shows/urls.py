@@ -1,7 +1,8 @@
 from django.urls import path
 
-from . import views
+from .views import RandomEpisodeView
+
 
 urlpatterns = [
-    path('<str:slug>/rnd', views.RandomEpisodeView.as_view())
+    path('<slug>/rnd', RandomEpisodeView.as_view(), name="random"),
 ]
