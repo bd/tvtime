@@ -1,8 +1,23 @@
 from django.contrib import admin
 from .models import Channel, Episode, Series, Show
 
-# Register your models here.
-admin.site.register(Channel)
-admin.site.register(Episode)
-admin.site.register(Series)
-admin.site.register(Show)
+
+@admin.register(Channel)
+class ChannelAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Episode)
+class EpisodeAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Series)
+class SeriesAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Show)
+class ShowAdmin(admin.ModelAdmin):
+    pass
+
