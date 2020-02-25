@@ -43,8 +43,9 @@ Advanced features and extensions are imagined, though no roadmap is currently im
     - OAuth/pwd
     - linked streaming accounts
     - white/blacklist, favorites
+    - tracking last/most watched, etc.
 - local media selector
-- automatic collection of media data
+- automatic collection of media data (the big effort)
 
     
     

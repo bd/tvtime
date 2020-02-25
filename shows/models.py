@@ -58,6 +58,9 @@ class Show(MediaBase):
         series = series if series else self.get_random_series()
         return Episode.objects.filter(series=series).order_by('?')[0]
 
+    def __str__(self):
+        return f'{self.title}'
+
     class Meta:
         abstract = False
 
@@ -80,6 +83,9 @@ class Series(models.Model):
         self.name = self.name if self.name else f'Season {self.number}'
         return super(__class__, self).save(*args, **kwargs)
 
+    def __str__(self):
+        return f'S{self.number}'
+
     class Meta:
         abstract = False
         unique_together = [['show', 'number']]
@@ -99,6 +105,9 @@ class Episode(MediaBase):
                              null=False,
                              blank=False)
     video = models.URLField(null=False, blank=False)
+
+    def __str__(self):
+        return f'{self.series.show} {self.series} E{self.number}: "{self.title}"'
 
     class Meta:
         abstract = False
